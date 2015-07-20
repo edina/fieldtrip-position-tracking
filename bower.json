@@ -1,0 +1,23 @@
+{
+  "name": "fieldtrip-position-tracking",
+  "version": "0.1.0",
+  "homepage": "https://github.com/edina/fieldtrip-position-tracking",
+  "authors": [
+    "Ruben Gamez <ruben.gamez@ed.ac.uk>"
+  ],
+  "main": "src/www/js/position-tracking.js",
+  "dependencies": {
+    "bacon": "~0.7.70"
+  },
+  "keywords": [
+    "fieldtrip-open"
+  ],
+  "license": "BSD-3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

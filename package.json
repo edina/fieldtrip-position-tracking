@@ -1,0 +1,38 @@
+{
+  "name": "fieldtrip-position-tracking",
+  "version": "0.1.0",
+  "description": "A fieldtrip plugin for recording the user per for basis",
+  "main": "src/www/js/sync.js",
+  "scripts": {
+    "lint": "node_modules/jshint/bin/jshint src/www/js/**.js",
+    "release": "npm run lint && node_modules/release-it/bin/release.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edina/fieldtrip-position-tracking.git"
+  },
+  "keywords": [
+    "fieldtrip"
+  ],
+  "author": [
+    "EDINA Geo Team <edina@edina.ac.uk>"
+  ],
+  "contributors": [{
+    "name": "Ruben Gamez",
+    "email": "ruben.gamez@ed.ac.uk"
+  }],
+  "license": "BSD-4-Clause",
+  "dependencies": {
+    "jquery": "^1.11.2",
+    "bacon": "~0.7.70"
+  },
+  "devDependencies": {
+    "jshint": "2.5.3",
+    "release-it": "0.0.15"
+  },
+  "bugs": {
+    "url": "https://github.com/edina/fieldtrip-position-tracking/issues"
+  },
+  "homepage": "https://github.com/edina/fieldtrip-position-tracking"
+}
