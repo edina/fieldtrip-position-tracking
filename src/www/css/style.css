@@ -1,0 +1,55 @@
+#position-tracking-title {
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+ul#position-tracking-editors-list > li.group{
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+ul#position-tracking-editors-list > li.editor{
+    padding-left: 36px;
+}
+
+.editor-label {
+    display: inline-block;
+    font-size: 18px;
+}
+
+.controls {
+    display: inline-block;
+    position: absolute;
+    right: 13px;
+}
+
+.controls > .control-button {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    margin-left: 5px;
+    background-size: cover;
+    display: inline-block;
+}
+
+.controls > .control-button.record.on {
+    background-image: url(images/record-red-icon.svg);
+}
+
+.controls > .control-button.record.off {
+    background-image: url(images/record-black-icon.svg);
+}
+
+.controls > .control-button.pause {
+    background-image: url(images/pause-icon.svg);
+}
+
+.controls > .control-button.stop {
+    background-image: url(images/stop-icon.svg);
+}
+
+
+
