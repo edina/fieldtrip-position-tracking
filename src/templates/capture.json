@@ -1,0 +1,19 @@
+{
+    "body": {
+        "section3": {
+            "title": "Plugins",
+            "items": {
+                "item2": {
+                    "div": {"class": "ui-block-b"},
+                    "a": {"class": "position-tracking-page-button", "href": "#"},
+                    "img": {
+                            "src": "plugins/position-tracking/css/images/position-tracking-button@2x.png",
+                            "alt": "Position Tracking"
+
+                            },
+                    "title": "Position Tracking"
+                }
+            }
+        }
+    }
+}
