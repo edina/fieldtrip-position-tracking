@@ -5,34 +5,49 @@
     font-size: 22px;
 }
 
+ul#position-tracking-editors-list {
+    margin: 0;
+    width: 100%;
+}
+
+ul#position-tracking-editors-list > li{
+    margin: 0;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
 ul#position-tracking-editors-list > li.group{
     font-size: 20px;
     font-weight: bold;
     text-transform: capitalize;
 }
 
-ul#position-tracking-editors-list > li.editor{
-    padding-left: 36px;
-}
-
 .editor-label {
-    display: inline-block;
+    display: block;
     font-size: 18px;
+    overflow-x: auto;
+    margin-right: 110px;
+    margin-left: 20px;
 }
 
 .controls {
-    display: inline-block;
-    position: absolute;
-    right: 13px;
+    display: block;
+    float: right;
+    margin-top: -23px;
 }
 
 .controls > .control-button {
+    display: inline-block;
     width: 25px;
     height: 25px;
     margin-right: 5px;
     margin-left: 5px;
     background-size: cover;
-    display: inline-block;
+}
+
+.controls > .control-button:active {
+    opacity: 0.5;
 }
 
 .controls > .control-button.record.on {
