@@ -29,7 +29,7 @@ define(function(require, exports) {
 
             positionStream
                 .takeWhile(isRecording)
-                .doLog()
+                //.doLog()
                 .onValue(function(position) {
                     positions.push(position);
                     stream.push(position);
