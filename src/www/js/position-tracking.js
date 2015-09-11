@@ -5,8 +5,8 @@
 define(function(require) {
     var _ = require('underscore');
     var location = require('./location');
-    var PositionRecorder = require('./position-recorder');
     var utils = require('./utils');
+    var recorderManager = require('./position-recorders-manager').PositionRecordersManager;
 
     //Constants
     var PLUGIN_PATH = 'plugins/position-tracking';
@@ -59,6 +59,57 @@ define(function(require) {
             .listview('refresh');
     };
 
+    var registerControlEvents = function() {
+
+        var toggleRecordButton = function($control, recorder) {
+            var $recordButton = $control.find('.control-button.record');
+
+            if (recorder && recorder.isRecording()) {
+                $recordButton
+                    .removeClass('off')
+                    .addClass('on');
+            }
+            else {
+                $recordButton
+                    .removeClass('on')
+                    .addClass('off');
+            }
+        };
+
+        var getActionName = function($target) {
+            var controlTypes = ['record', 'pause', 'stop'];
+            var action;
+
+            action = _.find(controlTypes, function(className) {
+                return $target.hasClass(className);
+            });
+
+            return action;
+        };
+
+        $('#position-tracking-editors-list').on('vclick', '.control-button', function(event) {
+            var recorder;
+            var $targetButton = $(event.target);
+            var $controls = $targetButton.parent('.controls');
+            var editorId = $controls.data('editor-id');
+            var groupId = $controls.data('group-id');
+
+            switch (getActionName($targetButton)) {
+                case 'record':
+                    recorder = recorderManager.startRecorder(editorId, groupId);
+                    break;
+                case 'pause':
+                    recorder = recorderManager.pauseRecorder(editorId, groupId);
+                    break;
+                case 'stop':
+                    recorder = recorderManager.stopRecorder(editorId, groupId);
+                    break;
+            }
+
+            toggleRecordButton($controls, recorder);
+        });
+    };
+
     /**
      * Initialize the plugin
      */
@@ -73,6 +124,7 @@ define(function(require) {
 
         $(document).on('pagebeforeshow', '#position-tracking-main-page', function() {
             renderEditorsList();
+            registerControlEvents();
         });
     };
 
