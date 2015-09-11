@@ -10,7 +10,8 @@ define(function(require) {
     var SESSION_PREFIX = 'position-tracked-';
 
     /**
-     * Extend a geoJSON object as a record and wrapping it in a annotation
+     * Extend a geoJSON object as a record and wrap it in an annotation
+     *
      * @param geoJSON {Object} a geoJSON object
      * @param editorId {String} an editor id
      * @param groupId {String} a group id
@@ -42,6 +43,7 @@ define(function(require) {
     /**
      * The position recorders are stored using a combined key groupId plus editorId
      * this is a helper function to store them under that scheme.
+     * @returns {Object} exporting the get, getAll, put and remove functions
      */
     var PositionRecorders = function() {
         var recorders = {};
@@ -97,6 +99,8 @@ define(function(require) {
 
     /**
      * A function to store and handle the position recorders
+     * @returns {Object} exporting the startRecorder, pauseRecorder, stopRecorder
+     * and getRecorders functions
      */
     var PositionRecordersManager = function() {
         var recorders = new PositionRecorders();
