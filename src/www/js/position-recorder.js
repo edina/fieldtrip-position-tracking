@@ -10,6 +10,9 @@ define(function(require, exports) {
     var PositionRecorder = function() {
         var recordingFlag = false;
         var positions = [];
+        var recording;
+        var control;
+        var stream;
 
         /**
          * Return the status of the recorder
@@ -24,11 +27,12 @@ define(function(require, exports) {
          * @returns a copy of the stream
          */
         var startRecording = function() {
-            var stream = new Bacon.Bus();
+            control =  new Bacon.Bus();
+            stream = new Bacon.Bus();
             recordingFlag = true;
 
             positionStream
-                .takeWhile(isRecording)
+                .takeUntil(control)
                 //.doLog()
                 .onValue(function(position) {
                     positions.push(position);
@@ -42,6 +46,7 @@ define(function(require, exports) {
          * Stop recording positions
          */
         var stopRecording = function() {
+            control.push(new Bacon.End());
             recordingFlag = false;
         };
 
