@@ -19,12 +19,23 @@ define(function(require) {
     );
 
     templates.editorItem = _.template(
-        '<li class="editor">' +
-            '<div class="editor-label"><%-name%></div>' +
-            '<div class="controls" data-editor-id="<%=editorId%>" data-group-id="<%=groupId%>">' +
-                '<div class="control-button record off"></div>' +
-                '<div class="control-button pause"></div>' +
-                '<div class="control-button stop"></div>' +
+        '<li class="editor" data-editor-id="<%=editorId%>" data-group-id="<%=groupId%>">' +
+            '<div class="recording">' +
+                '<div class="editor-label"><%-name%></div>' +
+                '<div class="controls">' +
+                    '<div class="control-button record off" data-action="start"></div>' +
+                    '<div class="control-button more" data-action="more"></div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="saving" style="display: none">' +
+                '<div class="session">' +
+                    '<input type="text" />' +
+                '</div>' +
+                '<div class="controls">' +
+                    '<div class="control-button back" data-action="back"></div>' +
+                    '<div class="control-button add" data-action="add"></div>' +
+                    '<div class="control-button discard" data-action="discard"></div>' +
+                '</div>' +
             '</div>' +
         '</li>'
     );

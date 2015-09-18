@@ -2,5 +2,5 @@
 <!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-<path d="M0,0h512v512H0V0z" fill="#000000"/>
+<path d="M256,0C114.562,0,0,114.562,0,256s114.562,256,256,256s256-114.562,256-256S397.438,0,256,0z M256,460.8  C142.85,460.8,51.2,369.15,51.2,256c0-47.362,16.256-90.75,43.138-125.438l287.1,287.1C346.75,444.55,303.362,460.8,256,460.8z   M417.662,381.438l-287.1-287.1C165.25,67.456,208.638,51.2,256,51.2c113.15,0,204.8,91.649,204.8,204.8  C460.8,303.362,444.55,346.75,417.662,381.438z" fill="#000000"/>
 </svg>
