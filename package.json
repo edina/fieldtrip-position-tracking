@@ -1,6 +1,6 @@
 {
   "name": "fieldtrip-position-tracking",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A fieldtrip plugin for recording the user per for basis",
   "main": "src/www/js/sync.js",
   "scripts": {
