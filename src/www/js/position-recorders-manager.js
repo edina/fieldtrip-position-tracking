@@ -7,7 +7,7 @@ define(function(require) {
     var positionUtils = require('./position-utils');
     var records = require('records');
 
-    var SESSION_PREFIX = 'position-tracked-';
+    var SESSION_PREFIX = 'track-';
 
     /**
      * Extend a geoJSON object as a record and wrap it in an annotation
@@ -26,15 +26,15 @@ define(function(require) {
         record = geoJSON;
         record.properties = record.properties || {};
         record.name = name;
-        record.properties.editor = groupId;
+        record.properties.editor = editorId;
         record.properties.fields = [];
 
         // Wrap the record as an annotation
         annotation =  {
             record: geoJSON,
-            type: groupId,
+            type: editorId,
             isSynced: false,
-            editorGroup: editorId
+            editorGroup: groupId
         };
 
         return annotation;
@@ -114,6 +114,14 @@ define(function(require) {
         };
 
         /**
+         * Return the position recorders registered
+         * @returns {Object} of {PositionRecorder} recorders
+         */
+        var getRecorder = function(editorId, groupId) {
+            return recorders.get(editorId, groupId);
+        };
+
+        /**
          * Start or continue a position recorder
          * @param editorId {String} an editor id
          * @param groupId {String} a group id
@@ -158,12 +166,19 @@ define(function(require) {
          * @param editorId {String} an editor id
          * @param groupId {String} a group id
          */
-        var saveRecorder = function(recorder, editorId, groupId) {
-            var positions;
+        var saveRecorder = function(editorId, groupId, recordName) {
+            var positions = [];
             var geoJSON;
             var annotation;
+            var recorder = recorders.get(editorId, groupId);
 
-            positions = recorder.getRecordedPositions();
+            if (recorder) {
+                positions = recorder.getRecordedPositions();
+            }
+            else {
+                console.warn('Not recorder found (' + editorId + ', ' + groupId + ')');
+            }
+
             if (positions.length > 0) {
                 if (positions.length == 1) {
                     geoJSON = positionUtils.
@@ -175,7 +190,7 @@ define(function(require) {
                 }
 
                 annotation = geoJSONAsAnnotation(
-                    geoJSON, SESSION_PREFIX + editorId, groupId, 'Track');
+                    geoJSON, SESSION_PREFIX + editorId, groupId, recordName);
 
                 records.saveAnnotation(undefined, annotation);
 
@@ -198,18 +213,24 @@ define(function(require) {
 
             if (recorder) {
                 recorder.stopRecording();
-                saveRecorder(recorder, editorId, groupId);
-                recorders.remove(editorId, groupId);
             }
 
             return recorder;
+        };
+
+        var disposeRecorder = function(editorId, groupId) {
+            stopRecorder(editorId, groupId);
+            recorders.remove(editorId, groupId);
         };
 
         return {
             startRecorder: startRecorder,
             pauseRecorder: pauseRecorder,
             stopRecorder: stopRecorder,
-            getRecorders: getRecorders
+            getRecorders: getRecorders,
+            getRecorder: getRecorder,
+            saveRecorder: saveRecorder,
+            disposeRecorder: disposeRecorder
         };
     };
 
