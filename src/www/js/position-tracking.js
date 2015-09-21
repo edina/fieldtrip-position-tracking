@@ -22,7 +22,7 @@ define(function(require) {
         '<li class="editor" data-editor-id="<%=editorId%>" data-group-id="<%=groupId%>">' +
             '<div class="editor-label"><%-name%></div>' +
             '<div style="display: none;" class="save-track">' +
-                '<input class="record-name" type="text" placeholder="Record name"/>' +
+                '<input class="record-name" type="text" placeholder="give the track a name"/>' +
             '</div>' +
             '<div class="controls">' +
                 '<div class="control-button record off" data-action="start"></div>' +
