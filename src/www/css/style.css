@@ -29,7 +29,7 @@ ul#position-tracking-editors-list > li.group{
     text-transform: capitalize;
 }
 
-li.editor > .saving > .session {
+li.editor > .save-track {
     display: block;
     font-size: 18px;
     margin-left: 20px;
@@ -45,8 +45,9 @@ li.editor > .saving > .session {
 
 .controls {
     display: block;
-    float: right;
-    margin-top: -25px;
+    position: absolute;
+    top: 13px;
+    right: 0;
     margin-right: 5px;
     line-height: 0;
 }
@@ -80,7 +81,7 @@ li.editor > .saving > .session {
     background-image: url(images/stop-icon.svg);
 }
 
-.controls > .control-button.add {
+.controls > .control-button.save {
     background-image: url(images/add-icon.svg);
 }
 
@@ -96,4 +97,16 @@ li.editor > .saving > .session {
     background-image: url(images/more-icon.svg);
 }
 
+.controls > .control-button.rotate {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+    transition-duration:0.8s;
+}
 
+
+input.record-name.error {
+    border-color: red;
+}
