@@ -43,7 +43,7 @@ define(function(require) {
     /**
      * The position recorders are stored using a combined key groupId plus editorId
      * this is a helper function to store them under that scheme.
-     * @returns {Object} exporting the get, getAll, put and remove functions
+     * @returns an instance of {PositionRecorders}
      */
     var PositionRecorders = function() {
         var recorders = {};
@@ -99,8 +99,7 @@ define(function(require) {
 
     /**
      * A function to store and handle the position recorders
-     * @returns {Object} exporting the startRecorder, pauseRecorder, stopRecorder
-     * and getRecorders functions
+     * @returns an instance of {PositionRecordersManager}
      */
     var PositionRecordersManager = function() {
         var recorders = new PositionRecorders();
@@ -218,6 +217,11 @@ define(function(require) {
             return recorder;
         };
 
+        /**
+         * Dispose a recorder
+         * @param editorId {String} an editor id
+         * @param groupId {String} a group id
+         */
         var disposeRecorder = function(editorId, groupId) {
             stopRecorder(editorId, groupId);
             recorders.remove(editorId, groupId);
