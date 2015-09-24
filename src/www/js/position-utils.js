@@ -64,14 +64,19 @@ define(function(require) {
             coordinates: []
         };
 
+        properties.pos_acc = [];
+
         _.forEach(positions, function(position) {
             var coordinates = [position.coords.longitude, position.coords.latitude];
+            var accuracy = position.coords.accuracy || null;
             var point;
 
             if (project === true) {
                 point = map.pointToInternal(coordinates);
                 coordinates = [point.lon, point.lat];
             }
+
+            properties.pos_acc.push(accuracy);
             geometry.coordinates.push(coordinates);
         });
 
