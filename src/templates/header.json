@@ -1,0 +1,12 @@
+{
+    "buttons" : {
+        "position-tracking-header":{
+            "class": "position-tracking-running",
+            "data-role": "button",
+            "data-inline": "true",
+            "data-transition": "none",
+            "data-iconpos": "notext",
+            "style": "display: none"
+        }
+    }
+}

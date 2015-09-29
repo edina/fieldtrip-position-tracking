@@ -68,6 +68,23 @@ define(function(require) {
     };
 
     /**
+     * Check if there is any recorder running and update the tracking icon in
+     * the header
+     */
+    var toggleTrackingRunningIcon = function() {
+        var recorders = recorderManager.getRecorders();
+        var isRecording = function(recorder) {
+            return recorder.isRecording();
+        };
+        if (_.some(recorders, isRecording)) {
+            $('.position-tracking-running').show();
+        }
+        else {
+            $('.position-tracking-running').hide();
+        }
+    };
+
+    /**
      * Render the list of editors and the recording controls
      */
     var renderEditorsList = function() {
@@ -109,6 +126,7 @@ define(function(require) {
                 .each(function(index, editor) {
                     updateEditorControls(editor);
                 });
+            toggleTrackingRunningIcon();
         });
 
         var changeEditorViewState = function($editor, state) {
@@ -208,9 +226,19 @@ define(function(require) {
             $('body').pagecontainer('change', 'position-tracking-main-page.html');
         });
 
+        $(document).on('vclick', '.position-tracking-running', function(event) {
+            event.preventDefault();
+            $('body').pagecontainer('change', 'position-tracking-main-page.html');
+        });
+
         $(document).on('pagebeforeshow', '#position-tracking-main-page', function() {
             registerControlEvents();
             renderEditorsList();
+        });
+
+        // Make the running icon visible in all pages
+        $(document).on('pagebeforeshow', function() {
+            toggleTrackingRunningIcon();
         });
     };
 

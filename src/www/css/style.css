@@ -9,6 +9,16 @@
     line-height: 40px;
 }
 
+.ui-header-buttons a.position-tracking-running {
+    background-image: url(images/track-white-icon-30@2x.png);
+    height: 30px;
+    width: 30px;
+    border-radius: 2em;
+    border-width: 0;
+    background-color: red !important;
+    background-size: cover;
+}
+
 ul#position-tracking-editors-list {
     margin: 0;
     margin: 40px 0 0;
